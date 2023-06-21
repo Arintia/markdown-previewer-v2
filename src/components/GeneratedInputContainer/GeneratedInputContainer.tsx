@@ -21,7 +21,8 @@ const useStyles = createStyles(() => ({
   colorPickerContainer: {
     display: 'flex',
     flexDirection: 'column',
-    width: '50%'
+    width: '50%',
+    height: '7rem'
   },
   colorPickerBtn: {
     width: '45%',
@@ -43,8 +44,8 @@ const useStyles = createStyles(() => ({
 
 const GeneratedInputContainer = (props: {inputText: string, resetInputText: any}) => {
   const theme = useMantineTheme();
-  const [bgColor, setBgColor] = useState(theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]);
-  const [textColor, setTextColor] = useState(theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]);
+  const [bgColor, setBgColor] = useState<string>(theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]);
+  const [textColor, setTextColor] = useState<string>(theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]);
   const outputRef = useRef<HTMLElement | null>(null);
   const { classes } = useStyles();
 
