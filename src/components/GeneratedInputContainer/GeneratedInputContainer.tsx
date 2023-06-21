@@ -22,7 +22,7 @@ const useStyles = createStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     width: '50%',
-    height: '7rem'
+    height: '6rem'
   },
   colorPickerBtn: {
     width: '45%',
@@ -34,12 +34,13 @@ const useStyles = createStyles(() => ({
   },
   inputContainer: {
     height: '35rem',
+    minHeight: '35rem',
     width: '75%',
     marginTop: '2rem',
     marginBottom: '2rem',
     padding: '2rem',
     boxShadow: 'rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px',
-    overflow: 'scroll'
+    overflow: 'auto'
   }
 }));
 

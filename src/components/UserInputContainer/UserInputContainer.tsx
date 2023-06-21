@@ -20,7 +20,7 @@ const useStyles = createStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     width: '50%',
-    height: '7rem'
+    height: '6rem'
   },
   colorPickerBtn: {
     width: '45%',
