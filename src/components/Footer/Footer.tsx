@@ -1,5 +1,5 @@
 import { createStyles } from '@mantine/core';
-import { IconBrandGithubFilled, IconBrandInstagram, IconBrandLinkedin } from '@tabler/icons-react';
+import { IconBrandGithub, IconBrandInstagram, IconBrandLinkedin } from '@tabler/icons-react';
 
 const useStyles = createStyles(() => ({
     footerContainer: {
@@ -35,7 +35,7 @@ const Footer = () : JSX.Element => {
         <footer className={classes.footerContainer}>
             <p>Developed by Yiğit Atak with ❤️ and a lot of ☕</p>
             <div className={classes.linkContainer}>
-                <a href="" className={classes.linkItem}><IconBrandGithubFilled size="1.32rem" stroke={2.5} /></a>
+                <a href="" className={classes.linkItem}><IconBrandGithub size="1.32rem" stroke={2.5} /></a>
                 <a href="" className={classes.linkItem}><IconBrandInstagram size="1.325rem" stroke={2.5} /></a>
                 <a href="" className={classes.linkItem}><IconBrandLinkedin size="1.325rem" stroke={2.5} /></a>
             </div>
