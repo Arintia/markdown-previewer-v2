@@ -1,6 +1,8 @@
 import { createStyles } from '@mantine/core';
 import { Switch } from '@mantine/core';
 import { IconSun, IconMoonStars } from '@tabler/icons-react';
+import { useMantineTheme } from '@mantine/core';
+
 const useStyles = createStyles(() => ({
     navbar: {
         height: '3rem',
@@ -28,8 +30,9 @@ const useStyles = createStyles(() => ({
     }
 }));
 
-const Navbar = () : JSX.Element => {
+const Navbar = (props: {toggleColorScheme: any }) : JSX.Element => {
     const { classes } = useStyles();
+    const theme = useMantineTheme();
     return (
         <header className={classes.navbar}>
             <div className={classes.navbarBrand}>
@@ -40,9 +43,11 @@ const Navbar = () : JSX.Element => {
             <div className={classes.navbarBtn}>
             <Switch
                 size="md"
-                color={'dark'}
+                color={theme.colorScheme === 'dark' ? 'gray' : 'dark'}
+                value={theme.colorScheme === 'dark' ? 'on' : 'off'}
                 onLabel={<IconSun size="1rem" stroke={2.5} color={'rgb(255, 212, 59)'} />}
                 offLabel={<IconMoonStars size="1rem" stroke={2.5} color={'rgb(34, 139, 230)'} />}
+                onClick={() => props.toggleColorScheme()}
             />
             </div>
         </header>

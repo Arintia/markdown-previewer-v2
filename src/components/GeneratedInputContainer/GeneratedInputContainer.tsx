@@ -1,4 +1,4 @@
-import { ColorInput, Button, createStyles } from '@mantine/core';
+import { ColorInput, Button, createStyles, useMantineTheme } from '@mantine/core';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
 import { useState, useEffect, useRef } from 'react';
 import MarkdownIt from 'markdown-it';
@@ -42,13 +42,14 @@ const useStyles = createStyles(() => ({
 
 
 const GeneratedInputContainer = (props: {inputText: string, resetInputText: any}) => {
-  const [bgColor, setBgColor] = useState("#ffffff");
-  const [textColor, setTextColor] = useState("#000000");
+  const theme = useMantineTheme();
+  const [bgColor, setBgColor] = useState(theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]);
+  const [textColor, setTextColor] = useState(theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]);
   const outputRef = useRef<HTMLElement | null>(null);
   const { classes } = useStyles();
 
-  const resetBgColor = () => setBgColor("#ffffff");
-  const resetTextColor = () => setTextColor("#000000");
+  const resetBgColor = () => setBgColor(theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]);
+  const resetTextColor = () => setTextColor(theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]);
 
   const md = MarkdownIt();
 
@@ -57,6 +58,11 @@ const GeneratedInputContainer = (props: {inputText: string, resetInputText: any}
       outputRef.current.innerHTML = md.render(props.inputText);
     }
   }, [props.inputText]);
+
+  useEffect(() => {
+    setBgColor(theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]);
+    setTextColor(theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]);
+  }, [theme.colorScheme]);
 
   return (
     <section className={classes.inputWrapper}>
@@ -71,7 +77,7 @@ const GeneratedInputContainer = (props: {inputText: string, resetInputText: any}
             onChangeEnd={(color : string) => setBgColor(color)} 
           />
           <div className={classes.colorPickerBtnContainer}>
-            {bgColor !== "#ffffff" &&
+            {bgColor !== (theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]) &&
               <Button variant="outline" color="red" size="md" className={classes.colorPickerBtn} onClick={resetBgColor}>
                 Reset
               </Button>
@@ -87,7 +93,7 @@ const GeneratedInputContainer = (props: {inputText: string, resetInputText: any}
             onChangeEnd={(color : string) => setTextColor(color)} 
           />
           <div className={classes.colorPickerBtnContainer}>
-          {textColor !== "#000000" &&
+          {textColor !==  (theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]) &&
             <Button variant="outline" color="red" size="md" className={classes.colorPickerBtn} onClick={resetTextColor}>
               Reset
             </Button>
