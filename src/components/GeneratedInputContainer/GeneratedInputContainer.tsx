@@ -36,8 +36,10 @@ const useStyles = createStyles(() => ({
     height: '35rem',
     width: '75%',
     marginTop: '2rem',
+    marginBottom: '2rem',
     padding: '2rem',
-    boxShadow: 'rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px'
+    boxShadow: 'rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px',
+    overflow: 'scroll'
   }
 }));
 
