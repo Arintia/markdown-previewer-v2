@@ -1,8 +1,20 @@
 ## Markdown Previewer v2 by Yiğit Atak
-![Simple Markdown Previewer](./src/assets/img/1.PNG)
-![Simple Markdown Previewer](./src/assets/img/2.PNG)
+![Markdown Previewer v2](./src/assets/img/1.png)
+![Markdown Previewer v2](./src/assets/img/2.png)
 
-### About the project
+### Table of Contents
+- [About the project](#about)
+- [Features](#features)
+- [Built with](#built-with)
+- [Getting started](#getting-started)
+- [Installation](#installation)
+- [Usage](#installation)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+### About
 This is the second version of my markdown previewer. The code has been **completely** over-hauled as I wrote this one from scratch. Just like the previous one, customization has been at the forefront of my development process. As such, I took the pre-defined theming to the next level and gave the end-user the freedom to choose whichever color they want for both the background and the text. Furthermore, the new version introduces Dark Mode. For a full list of features, please check [Features](#features) Suggestions for further improvement are welcome. Check the to-do list down below for my current road map for this project.
 
 ### Features
