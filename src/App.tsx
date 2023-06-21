@@ -3,6 +3,7 @@ import GeneratedInputContainer from "./components/GeneratedInputContainer/Genera
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import { createStyles } from '@mantine/core';
+import { useState } from "react";
 
 const useStyles = createStyles(() => ({
   appContainer: {
@@ -15,13 +16,16 @@ const useStyles = createStyles(() => ({
 
 const App = () : JSX.Element => {
   const { classes } = useStyles();
+  const [text, setText] = useState("");
 
+  const resetText = () => setText("");
+  
   return (
     <>
       <Navbar />
       <main className={classes.appContainer}>
-        <UserInputContainer />
-        <GeneratedInputContainer />
+        <UserInputContainer inputText={text} inputSetText={setText} />
+        <GeneratedInputContainer inputText={text} resetInputText={resetText} />
       </main>
       <Footer />
     </>

@@ -40,11 +40,12 @@ const useStyles = createStyles(() => ({
     height: '100%',
     width: '100%',
     resize: 'none',
-    padding: '1rem'
+    padding: '2rem',
+    whiteSpace: 'pre-wrap'
   }
 }));
 
-const UserInputContainer = () : JSX.Element => {
+const UserInputContainer = (props: {inputText: string, inputSetText: React.Dispatch<React.SetStateAction<string>>}) : JSX.Element => {
   const [bgColor, setBgColor] = useState("#ffffff");
   const [textColor, setTextColor] = useState("#000000");
 
@@ -52,6 +53,9 @@ const UserInputContainer = () : JSX.Element => {
 
   const resetBgColor = () => setBgColor("#ffffff");
   const resetTextColor = () => setTextColor("#000000");
+
+  const handleInput = (e : React.ChangeEvent<HTMLTextAreaElement>) => props.inputSetText(e.currentTarget.value);
+
   return (
     <section className={classes.inputWrapper}>
       <section className={classes.customizationContainer}>
@@ -89,7 +93,16 @@ const UserInputContainer = () : JSX.Element => {
         </div>
       </section>
       <section className={classes.inputContainer}>
-        <textarea autoFocus={true} autoCorrect='on' className={classes.inputText} style={{background: bgColor, color: textColor}}></textarea>
+        <textarea 
+          autoFocus={true} 
+          autoCorrect='on' 
+          className={classes.inputText} 
+          style={{background: bgColor, color: textColor}} 
+          value={props.inputText}
+          onChange={handleInput}
+        >
+
+        </textarea>
       </section>
     </section>
   );

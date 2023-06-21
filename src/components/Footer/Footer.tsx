@@ -35,9 +35,27 @@ const Footer = () : JSX.Element => {
         <footer className={classes.footerContainer}>
             <p>Developed by Yiğit Atak with ❤️ and a lot of ☕</p>
             <div className={classes.linkContainer}>
-                <a href="" className={classes.linkItem}><IconBrandGithub size="1.32rem" stroke={2.5} /></a>
-                <a href="" className={classes.linkItem}><IconBrandInstagram size="1.325rem" stroke={2.5} /></a>
-                <a href="" className={classes.linkItem}><IconBrandLinkedin size="1.325rem" stroke={2.5} /></a>
+                <a 
+                    href="https://github.com/Arintia/markdown-previewer-v2" 
+                    className={classes.linkItem}
+                    target="_blank"
+                >
+                    <IconBrandGithub size="1.32rem" stroke={2.5} />
+                </a>
+                <a 
+                    href="https://www.instagram.com" 
+                    className={classes.linkItem}
+                    target="_blank"
+                >
+                    <IconBrandInstagram size="1.325rem" stroke={2.5} />
+                </a>
+                <a 
+                    href="https://www.linkedin.com/in/yigitatak/" 
+                    className={classes.linkItem}
+                    target="_blank"
+                >
+                    <IconBrandLinkedin size="1.325rem" stroke={2.5} />
+                </a>
             </div>
         </footer>
     );

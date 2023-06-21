@@ -15,14 +15,29 @@ const useStyles = createStyles(() => ({
     }
 }));
 
-const ButtonContainer = () : JSX.Element => {
+const ButtonContainer = (props: {text: string, resetInputText: any}) : JSX.Element => {
     const { classes } = useStyles();
+
+    const prepareDownload = () => {
+        if(!props.text) return;
+        const file = new Blob([props.text], {type: "text/plain"});
+        const downloadLink = document.createElement("a");
+        downloadLink.setAttribute("download", "export.md");
+        if(window.webkitURL != null) {
+            downloadLink.setAttribute("href", window.webkitURL.createObjectURL(file)); 
+        } else {
+            downloadLink.setAttribute("href", window.URL.createObjectURL(file));
+        }
+        downloadLink.click();
+        downloadLink.remove();
+    }
+
     return (
         <section className={classes.buttonContainer}>
-            <Button variant="outline" color="red" size="md" className={classes.button}>
+            <Button variant="outline" color="red" size="md" className={classes.button} onClick={props.resetInputText}>
                 Reset
             </Button>
-            <Button leftIcon={<IconDownload />} variant="outline" size="md" className={classes.button}>
+            <Button leftIcon={<IconDownload />} variant="outline" size="md" className={classes.button} onClick={prepareDownload}>
                 Export MD File
             </Button>
         </section>

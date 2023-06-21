@@ -1,6 +1,7 @@
 import { ColorInput, Button, createStyles } from '@mantine/core';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import MarkdownIt from 'markdown-it';
 
 const useStyles = createStyles(() => ({
   inputWrapper: {
@@ -34,19 +35,28 @@ const useStyles = createStyles(() => ({
     height: '35rem',
     width: '75%',
     marginTop: '2rem',
+    padding: '2rem',
     boxShadow: 'rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px'
   }
 }));
 
 
-const GeneratedInputContainer = () => {
+const GeneratedInputContainer = (props: {inputText: string, resetInputText: any}) => {
   const [bgColor, setBgColor] = useState("#ffffff");
   const [textColor, setTextColor] = useState("#000000");
-
+  const outputRef = useRef<HTMLElement | null>(null);
   const { classes } = useStyles();
 
   const resetBgColor = () => setBgColor("#ffffff");
   const resetTextColor = () => setTextColor("#000000");
+
+  const md = MarkdownIt();
+
+  useEffect(() => {
+    if(outputRef.current !== null) {
+      outputRef.current.innerHTML = md.render(props.inputText);
+    }
+  }, [props.inputText]);
 
   return (
     <section className={classes.inputWrapper}>
@@ -85,10 +95,10 @@ const GeneratedInputContainer = () => {
           </div>
         </div>
       </section>
-      <section className={classes.inputContainer} style={{background: bgColor, color: textColor}} >
+      <section className={classes.inputContainer} style={{background: bgColor, color: textColor}} ref={outputRef}>
 
       </section>
-      <ButtonContainer />
+      <ButtonContainer text={props.inputText} resetInputText={props.resetInputText} />
     </section>
   );
 };
