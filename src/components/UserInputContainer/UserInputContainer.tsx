@@ -47,8 +47,8 @@ const useStyles = createStyles(() => ({
 
 const UserInputContainer = (props: {inputText: string, inputSetText: React.Dispatch<React.SetStateAction<string>>}) : JSX.Element => {
   const theme = useMantineTheme();
-  const [bgColor, setBgColor] = useState(theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]);
-  const [textColor, setTextColor] = useState(theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]);
+  const [bgColor, setBgColor] = useState<string>(theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]);
+  const [textColor, setTextColor] = useState<string>(theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]);
 
   const { classes } = useStyles();
 
