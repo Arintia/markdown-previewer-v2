@@ -5,6 +5,7 @@
 > Preview of your Markdown. Fast, easy and customizable.
 
 [Live demo](https://amazing-semifreddo-6e9e1e.netlify.app/)
+[Old version](https://github.com/Arintia/markdown-previewer)
 
 ### Table of Contents
 - [About the project](#about)
@@ -19,7 +20,7 @@
 - [Contact](#contact)
 
 ### About
-This is the second version of my markdown previewer. The code has been **completely** over-hauled as I wrote this one from scratch. Just like the previous one, customization has been at the forefront of my development process. As such, I took the pre-defined theming to the next level and gave the end-user the freedom to choose whichever color they want for both the background and the text. Furthermore, the new version introduces Dark Mode. For a full list of features, please check [Features](#features) Suggestions for further improvement are welcome. Check the to-do list down below for my current road map for this project.
+This is the second version of my markdown previewer. The code has been **completely** over-hauled as I wrote this one from scratch. Just like the previous one, customization has been at the forefront of my development process. As such, I took the pre-defined theming to the next level and gave the end-user the freedom to choose whichever color they want for both the background and the text. Furthermore, the new version introduces Dark Mode. For a full list of features, please check [features](#features) Suggestions for further improvement are welcome. Check the to-do list down below for my current road map for this project.
 
 ### Features
 - Fully customizable colors for both input and output(new in v2)
