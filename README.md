@@ -4,7 +4,7 @@
 
 > Preview of your Markdown. Fast, easy and customizable.
 
-[Live demo](https://649337cd48e2c206a6314359--amazing-semifreddo-6e9e1e.netlify.app/)
+[Live demo](https://amazing-semifreddo-6e9e1e.netlify.app/)
 
 ### Table of Contents
 - [About the project](#about)
