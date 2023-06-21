@@ -37,7 +37,7 @@ const useStyles = createStyles(() => ({
   }
 }));
 
-function GeneratedInputContainer() {
+const GeneratedInputContainer = () => {
   const { classes } = useStyles();
   return (
     <section className={classes.inputWrapper}>

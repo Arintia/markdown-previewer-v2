@@ -43,7 +43,7 @@ const useStyles = createStyles(() => ({
   }
 }));
 
-function UserInputContainer() {
+const UserInputContainer = () : JSX.Element => {
   const { classes } = useStyles();
   return (
     <section className={classes.inputWrapper}>

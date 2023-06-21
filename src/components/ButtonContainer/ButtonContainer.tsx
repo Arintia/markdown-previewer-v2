@@ -15,7 +15,7 @@ const useStyles = createStyles(() => ({
     }
 }));
 
-function ButtonContainer() {
+const ButtonContainer = () : JSX.Element => {
     const { classes } = useStyles();
     return (
         <section className={classes.buttonContainer}>

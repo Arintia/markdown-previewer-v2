@@ -29,7 +29,7 @@ const useStyles = createStyles(() => ({
         }
     }
 }));
-function Footer() {
+const Footer = () : JSX.Element => {
     const { classes } = useStyles();
     return (
         <footer className={classes.footerContainer}>

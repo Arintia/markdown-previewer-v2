@@ -13,7 +13,7 @@ const useStyles = createStyles(() => ({
   }
 }));
 
-function App() {
+const App = () : JSX.Element => {
   const { classes } = useStyles();
 
   return (

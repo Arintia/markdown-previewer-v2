@@ -28,7 +28,7 @@ const useStyles = createStyles(() => ({
     }
 }));
 
-function Navbar() {
+const Navbar = () : JSX.Element => {
     const { classes } = useStyles();
     return (
         <header className={classes.navbar}>
