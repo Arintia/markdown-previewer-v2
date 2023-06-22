@@ -10,7 +10,7 @@ const useStyles = createStyles(() => ({
         display: 'flex'
     },
     navbarHeader: {
-        fontSize: '1.5rem',
+        fontSize: '1.25rem',
         fontFamily: '"Caveat", cursive;'
     },
     navbarBrand: {

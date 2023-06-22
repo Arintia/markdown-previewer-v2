@@ -11,7 +11,10 @@ const useStyles = createStyles(() => ({
   },
   customizationContainer: {
     width: '75%',
-    display: 'flex'
+    display: 'flex',
+    [`@media (max-width: 514px)`]: {
+      flexDirection: 'column'
+    },
   },
   colorPicker: {
     marginRight: '5rem',

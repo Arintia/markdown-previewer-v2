@@ -7,3 +7,16 @@
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
 }
+
+
+@media only screen and (max-width:821px) {
+    :root {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width:514px) {
+    :root {
+        font-size: 8px;
+    }
+}
