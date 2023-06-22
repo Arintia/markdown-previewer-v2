@@ -1,5 +1,4 @@
 import { ColorInput, Button, createStyles, useMantineTheme } from '@mantine/core';
-import { useState, useEffect } from 'react';
 
 const useStyles = createStyles(() => ({
   inputWrapper: {
@@ -46,22 +45,48 @@ const useStyles = createStyles(() => ({
   }
 }));
 
-const UserInputContainer = (props: {inputText: string, inputSetText: React.Dispatch<React.SetStateAction<string>>}) : JSX.Element => {
+const UserInputContainer = (props: 
+{
+  inputText: string, 
+  inputSetText: React.Dispatch<React.SetStateAction<string>>, 
+  inputBackgroundColor: string, 
+  setInputBackgroundColor: React.Dispatch<React.SetStateAction<string>>,
+  inputTextColor: string, 
+  setInputTextColor: React.Dispatch<React.SetStateAction<string>>,
+  setInputModifiedBackground: React.Dispatch<React.SetStateAction<Boolean>>,
+  setInputModifiedTextColor: React.Dispatch<React.SetStateAction<Boolean>>
+}) : JSX.Element => {
   const theme = useMantineTheme();
-  const [bgColor, setBgColor] = useState<string>(theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]);
-  const [textColor, setTextColor] = useState<string>(theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]);
 
   const { classes } = useStyles();
 
-  const resetBgColor = () => setBgColor(theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]);
-  const resetTextColor = () => setTextColor(theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]);
+  const resetBgColor = () => {
+    props.setInputBackgroundColor(theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]);
+    localStorage.removeItem("inputBgColor");
+    props.setInputModifiedBackground(false);
+  }
+  const resetTextColor = () => { 
+    props.setInputTextColor(theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]);
+    localStorage.removeItem("inputTextColor");
+    props.setInputModifiedTextColor(false);
+  }
 
-  const handleInput = (e : React.ChangeEvent<HTMLTextAreaElement>) => props.inputSetText(e.currentTarget.value);
+  const handleInput = (e : React.ChangeEvent<HTMLTextAreaElement>) => {
+    props.inputSetText(e.currentTarget.value);
+    localStorage.setItem("inputText", e.currentTarget.value);
+  }
 
-  useEffect(() => {
-    setBgColor(theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]);
-    setTextColor(theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]);
-  }, [theme.colorScheme]);
+  const handleBgColorChange = (color : string) => {
+    localStorage.setItem("inputBgColor", color);
+    props.setInputBackgroundColor(color);
+    props.setInputModifiedBackground(true);
+  };
+
+  const handleTextColorChange = (color : string) => {
+    localStorage.setItem("inputTextColor", color);
+    props.setInputTextColor(color); 
+    props.setInputModifiedTextColor(true);
+  }
 
   return (
     <section className={classes.inputWrapper}>
@@ -71,11 +96,11 @@ const UserInputContainer = (props: {inputText: string, inputSetText: React.Dispa
             placeholder="Pick a color" 
             label="Background Color" 
             className={classes.colorPicker} 
-            value={bgColor} 
-            onChangeEnd={(color : string) => setBgColor(color)} 
+            value={props.inputBackgroundColor} 
+            onChangeEnd={handleBgColorChange} 
           />
           <div className={classes.colorPickerBtnContainer}>
-            {bgColor !== (theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]) &&
+            {props.inputBackgroundColor !== (theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]) &&
               <Button variant="outline" color="red" size="md" className={classes.colorPickerBtn} onClick={resetBgColor}>
                 Reset
               </Button>
@@ -87,11 +112,11 @@ const UserInputContainer = (props: {inputText: string, inputSetText: React.Dispa
             placeholder="Pick a color" 
             label="Text Color" 
             className={classes.colorPicker} 
-            value={textColor} 
-            onChangeEnd={(color : string) => setTextColor(color)} 
+            value={props.inputTextColor} 
+            onChangeEnd={handleTextColorChange} 
           />
           <div className={classes.colorPickerBtnContainer}>
-            {textColor !== (theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]) &&
+            {props.inputTextColor !== (theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]) &&
               <Button variant="outline" color="red" size="md" className={classes.colorPickerBtn} onClick={resetTextColor}>
                 Reset
               </Button>
@@ -104,7 +129,7 @@ const UserInputContainer = (props: {inputText: string, inputSetText: React.Dispa
           autoFocus={true} 
           autoCorrect='on' 
           className={classes.inputText} 
-          style={{background: bgColor, color: textColor}} 
+          style={{background: props.inputBackgroundColor, color: props.inputTextColor}} 
           value={props.inputText}
           onChange={handleInput}
         >
