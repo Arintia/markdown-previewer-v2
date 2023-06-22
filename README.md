@@ -27,6 +27,7 @@ This is the second version of my markdown previewer. The code has been **complet
 - Light/Dark Mode(new in v2)
 - Export straight from the app(new in v2)
 - Utilizes TypeScript instead of JavaScript! (new in v2)
+- All your customization options and your input are saved in localStorage. You won't lose your progress on page re-loads! (new in v2)
 - See the preview of the markdown you're typing out
 - Reset the markdown with a single button click
 
@@ -58,7 +59,7 @@ You need the following tools for installation:
 This project can be used for when you're writing out a markdown file for your own project. 
 
 ### Roadmap
-- [ ] Usage of cookies/localStorage to store state
+- [X] Usage of cookies/localStorage to store state
 - [ ] Better responsiveness. There's currently none but it isn't horrible.
 
 ### Contributing
