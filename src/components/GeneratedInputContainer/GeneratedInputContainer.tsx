@@ -61,34 +61,57 @@ const GeneratedInputContainer = (props:
   }) => {
 
   const theme = useMantineTheme();
+  /* 
+    * outputRef is used as reference to the output div.
+  */
   const outputRef = useRef<HTMLElement | null>(null);
   const { classes } = useStyles();
 
+  /* 
+    * resetBgColor is a function that's used to reset the output field background color back to the default.
+  */
   const resetBgColor = () => { 
     props.setGeneratedBackgroundColor(theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[3]); 
     props.setGeneratedModifiedBackground(false);
     localStorage.removeItem("generatedBgColor");
   }
+
+  /* 
+    * resetTextColor is a function that's used to reset the output field text color back to the default.
+  */
   const resetTextColor = () => { 
     props.setGeneratedTextColor(theme.colorScheme === 'dark' ? theme.colors.gray[3] : theme.colors.dark[6]); 
     props.setGeneratedModifiedTextColor(false);
     localStorage.removeItem("generatedTextColor");
   }
 
+  /*
+    * Initiliazes Markdown-It.
+  */
   const md = MarkdownIt();
 
+  /*
+    * Used to render output MD as the user types.
+  */
   useEffect(() => {
     if(outputRef.current !== null) {
       outputRef.current.innerHTML = md.render(props.inputText);
     }
   }, [props.inputText]);
 
+  
+  /* 
+    * handleBgColorChange is a function that's called whenever a user is done changing the background color of the output field.
+  */
   const handleBgColorChange = (color : string) => {
     localStorage.setItem("generatedBgColor", color);
     props.setGeneratedBackgroundColor(color);
     props.setGeneratedModifiedBackground(true);
   };
 
+  /* 
+    * handleTextColorChange is a function that's called whenever a user is done changing the text color of the output field.
+  */
   const handleTextColorChange = (color : string) => {
     localStorage.setItem("generatedTextColor", color);
     props.setGeneratedTextColor(color); 

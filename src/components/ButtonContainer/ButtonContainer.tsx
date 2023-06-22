@@ -18,6 +18,12 @@ const useStyles = createStyles(() => ({
 const ButtonContainer = (props: {text: string, resetInputText: any}) : JSX.Element => {
     const { classes } = useStyles();
 
+    /* 
+        * prepareDownload is a function that's used to prepare a download.
+        * The way it works is; a blob is created with the required data.
+        * Then, an anchor element is created and necessary attributes are set. This operation also supports legacy browsers with the use of window object.
+        * Finally, the download anchor element is clicked and removed once again.
+    */
     const prepareDownload = () => {
         if(!props.text) return;
         const file = new Blob([props.text], {type: "text/plain"});
