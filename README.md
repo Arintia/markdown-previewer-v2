@@ -60,7 +60,7 @@ This project can be used for when you're writing out a markdown file for your ow
 
 ### Roadmap
 - [X] Usage of cookies/localStorage to store state
-- [ ] Better responsiveness. There's currently none but it isn't horrible.
+- [X] Better responsiveness. There's currently none but it isn't horrible.
 
 ### Contributing
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
